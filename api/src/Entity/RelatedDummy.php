@@ -5,19 +5,14 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * This is a dummy entity. Remove it!
- *
+/** *
  * @ApiResource
- * @ApiFilter(DateFilter::class, properties={"sentAt"})
- * @ApiFilter(SearchFilter::class, properties={"recipientName"})
  * @ORM\Entity
  */
-class Greeting
+class RelatedDummy
 {
     /**
      * @var int The entity Id
@@ -29,24 +24,15 @@ class Greeting
     private $id;
 
     /**
-     * @var string A nice person
-     *
      * @ORM\Column
-     * @Assert\NotBlank
      */
-    public $recipientName = '';
+    public $dummyData = '';
 
     /**
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="sentGreetings")
-     * @ORM\JoinColumn(name="sender_id")
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="relatedDummies")
+     * @ORM\JoinColumn(name="person_id")
      */
-    public $sender;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank
-     */
-    public $sentAt;
+    public $person;
 
     public function getId(): int
     {

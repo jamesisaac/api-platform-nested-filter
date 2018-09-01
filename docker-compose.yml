@@ -70,6 +70,11 @@ services:
     ports:
       - "5432:5432"
 
+  adminer:
+    image: adminer
+    ports:
+      - "8090:8080"
+
   client:
     # Use a static website hosting service in production
     # See https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment
